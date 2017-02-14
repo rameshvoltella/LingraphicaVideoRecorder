@@ -57,6 +57,7 @@ public class LGCameraActivity extends Activity implements Camera.PictureCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mContext = this;
         setContentView(R.layout.activity_lgcamera);
 
         mCameraOrientationController = CameraOrientationController.newInstance();
@@ -68,6 +69,7 @@ public class LGCameraActivity extends Activity implements Camera.PictureCallback
             @SuppressWarnings("unused")
             @Override
             public void onClick(View v) {
+                ((LGVideoRecorderApplication) getApplication()).disableKioskMode(mContext);
                 setResult(RESULT_CANCELED);
                 finish();
             }
