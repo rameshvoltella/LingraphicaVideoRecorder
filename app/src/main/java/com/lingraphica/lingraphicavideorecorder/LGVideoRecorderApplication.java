@@ -16,7 +16,7 @@ public class LGVideoRecorderApplication extends Application {
     public static final String LOG_TAG = "LG VIDEO";
 
     public static final String TEMP_VIDEO_OUTPUT = Environment.getExternalStorageDirectory()
-            + "/tempvideo.mp4"; //$NON-NLS-1$
+            + "/lingraphica/tmp/tempvideo.mp4"; //$NON-NLS-1$
 
 
     public boolean isDeviceinLockTaskMode(Context context) {

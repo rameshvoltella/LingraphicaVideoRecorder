@@ -4,4 +4,5 @@
     <string name="Unable_to_start_recording">"No se puede empezar a grabar"</string>
     <string name="Cannot_switch_camera">"No se puede cambiar la cámara en este equipo"</string>
     <string name="Unable_to_start_camera">"No se puede iniciar la cámara"</string>
+    <string name="Unknown_error_while_recording">"Se encontró un Error Desconocido al grabar. Inténtalo de nuevo."</string>
 </resources>

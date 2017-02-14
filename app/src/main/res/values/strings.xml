@@ -4,4 +4,5 @@
     <string name="Unable_to_start_recording">Unable to start recording</string>
     <string name="Cannot_switch_camera">Cannot switch the camera on this device</string>
     <string name="Unable_to_start_camera">Unable to start camera</string>
+    <string name="Unknown_error_while_recording">Unknown Error encountered while recording. Try again.</string>
 </resources>

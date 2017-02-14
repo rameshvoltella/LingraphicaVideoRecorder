@@ -70,9 +70,7 @@ public class LGCameraActivity extends Activity implements Camera.PictureCallback
             @SuppressWarnings("unused")
             @Override
             public void onClick(View v) {
-                ((LGVideoRecorderApplication) getApplication()).disableKioskMode(mContext);
-                setResult(RESULT_CANCELED);
-                finish();
+                onVideoTaken(RESULT_CANCELED);
             }
         });
 
@@ -104,7 +102,6 @@ public class LGCameraActivity extends Activity implements Camera.PictureCallback
     }
 
 
-
     @Override
     public void onPictureTaken(byte[] data, Camera camera) {
 
@@ -117,7 +114,29 @@ public class LGCameraActivity extends Activity implements Camera.PictureCallback
 
     @Override
     public void onInfo(MediaRecorder mr, int what, int extra) {
-
+        // regardless of "what" we want to stop the recording
+        switch (what) {
+            case MediaRecorder.MEDIA_RECORDER_INFO_UNKNOWN:
+                mr.stop();
+                Toast.makeText(mContext,
+                        R.string.Unknown_error_while_recording,
+                        Toast.LENGTH_SHORT).show();
+                ((ImageButton) findViewById(R.id.camera_take_video_button))
+                        .setImageResource(R.drawable.take_video);
+                onVideoTaken(RESULT_CANCELED);
+                break;
+            case MediaRecorder.MEDIA_RECORDER_INFO_MAX_DURATION_REACHED:
+            case MediaRecorder.MEDIA_RECORDER_INFO_MAX_FILESIZE_REACHED:
+                mr.stop();
+                // Toast.makeText(mContext, "Recording created.",
+                // Toast.LENGTH_SHORT).show();
+                ((ImageButton) findViewById(R.id.camera_take_video_button))
+                        .setImageResource(R.drawable.take_video);
+                onVideoTaken(RESULT_OK);
+                break;
+            default:
+                break;
+        }
     }
 
     private void releaseCamera() {
@@ -186,6 +205,7 @@ public class LGCameraActivity extends Activity implements Camera.PictureCallback
     }
 
     public void onVideoTaken(int resultCode) {
+        ((LGVideoRecorderApplication) getApplication()).disableKioskMode(mContext);
         releaseMediaRecorder();
         recordingVideoRightNow = false;
         setResult(resultCode);
