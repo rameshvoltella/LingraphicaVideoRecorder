@@ -15,6 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.lingraphica.audio.SoundPlayer;
 import com.lingraphica.device.camera.CameraOrientationController;
 import com.lingraphica.device.camera.CameraPreview;
 
@@ -102,6 +103,8 @@ public class LGCameraActivity extends Activity implements Camera.PictureCallback
         releaseCamera();
     }
 
+
+
     @Override
     public void onPictureTaken(byte[] data, Camera camera) {
 
@@ -109,7 +112,7 @@ public class LGCameraActivity extends Activity implements Camera.PictureCallback
 
     @Override
     public void onShutter() {
-
+        new SoundPlayer().play(mContext, R.raw.camera_shutter_click);
     }
 
     @Override
