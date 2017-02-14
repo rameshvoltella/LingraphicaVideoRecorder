@@ -5,4 +5,45 @@
     android:layout_height="fill_parent"
     android:keepScreenOn="true">
 
+    <FrameLayout
+        android:id="@+id/camera_preview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+    </FrameLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/transparent"
+        android:id="@+id/button_bar">
+        <ImageButton
+            android:id="@+id/camera_cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/cancel_button"
+            android:layout_marginTop="4dp"
+            android:layout_alignParentRight="false"
+            android:layout_toRightOf="@+id/camera_take_video_button"
+            android:layout_marginLeft="80dp"/>
+        <ImageButton
+            android:id="@+id/camera_take_video_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/take_video"
+            android:layout_marginTop="4dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="16dp"/>
+    </RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/camera_switch_camera_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/rotate_camera"
+        android:layout_alignParentLeft="true"
+        android:layout_above="@+id/button_bar"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="64dp"/>
+
 </RelativeLayout>

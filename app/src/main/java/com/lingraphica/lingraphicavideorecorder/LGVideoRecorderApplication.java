@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
+import android.os.Environment;
 import android.util.Log;
 
 /**
@@ -13,6 +14,9 @@ import android.util.Log;
 public class LGVideoRecorderApplication extends Application {
 
     public static final String LOG_TAG = "LG VIDEO";
+
+    public static final String TEMP_VIDEO_OUTPUT = Environment.getExternalStorageDirectory()
+            + "/tempvideo.mp4"; //$NON-NLS-1$
 
 
     public boolean isDeviceinLockTaskMode(Context context) {
