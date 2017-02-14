@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Lingraphica Video Recorder</string>
     <string name="recording_label">REC</string>
     <string name="Unable_to_start_recording">"No se puede empezar a grabar"</string>
     <string name="Cannot_switch_camera">"No se puede cambiar la cámara en este equipo"</string>
