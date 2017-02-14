@@ -19,10 +19,10 @@ public class LGVideoRecorderApplication extends Application {
             + "/lingraphica/tmp/tempvideo.mp4"; //$NON-NLS-1$
 
     public static final String VIDEO_OUTPUT = Environment.getExternalStorageDirectory()
-            + "/lingraphica/tmp/videooutput.mp4";
+            + "/lingraphica/tmp/video_output.mp4";
 
     public static final String THUMBNAIL_IMAGE = Environment.getExternalStorageDirectory()
-            + "/lingraphica/tmp/icon_editor.png";
+            + "/lingraphica/tmp/video_thumbnail.png";
 
     public boolean isDeviceinLockTaskMode(Context context) {
         Log.i(LOG_TAG, "Checking isInLockTaskMode");
