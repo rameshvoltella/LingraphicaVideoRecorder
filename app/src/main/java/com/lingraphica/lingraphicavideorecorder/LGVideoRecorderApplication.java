@@ -1,5 +1,6 @@
 package com.lingraphica.lingraphicavideorecorder;
 
+import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
@@ -19,5 +20,25 @@ public class LGVideoRecorderApplication extends Application {
         ActivityManager manager = (ActivityManager) context
                 .getSystemService(ACTIVITY_SERVICE);
         return manager.isInLockTaskMode();
+    }
+
+    public void enableKioskMode(Context context) {
+        if (!isDeviceinLockTaskMode(context)) {
+            try {
+                ((Activity) context).startLockTask();
+            } catch (Exception e) {
+                Log.i(LOG_TAG, "Cannot start Lock Task");
+            }
+        }
+    }
+
+    public void disableKioskMode(Context context) {
+        if (isDeviceinLockTaskMode(context)) {
+            try {
+                ((Activity) context).stopLockTask();
+            } catch (Exception e) {
+                Log.i(LOG_TAG, "Cannot start Lock Task");
+            }
+        }
     }
 }
