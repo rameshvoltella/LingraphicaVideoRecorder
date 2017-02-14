@@ -18,6 +18,11 @@ public class LGVideoRecorderApplication extends Application {
     public static final String TEMP_VIDEO_OUTPUT = Environment.getExternalStorageDirectory()
             + "/lingraphica/tmp/tempvideo.mp4"; //$NON-NLS-1$
 
+    public static final String VIDEO_OUTPUT = Environment.getExternalStorageDirectory()
+            + "/lingraphica/tmp/videooutput.mp4";
+
+    public static final String THUMBNAIL_IMAGE = Environment.getExternalStorageDirectory()
+            + "/lingraphica/tmp/icon_editor.png";
 
     public boolean isDeviceinLockTaskMode(Context context) {
         Log.i(LOG_TAG, "Checking isInLockTaskMode");
@@ -29,6 +34,7 @@ public class LGVideoRecorderApplication extends Application {
     public void enableKioskMode(Context context) {
         if (!isDeviceinLockTaskMode(context)) {
             try {
+                Log.i(LOG_TAG, "Enabling LockTask");
                 ((Activity) context).startLockTask();
             } catch (Exception e) {
                 Log.i(LOG_TAG, "Cannot start Lock Task");
@@ -39,9 +45,10 @@ public class LGVideoRecorderApplication extends Application {
     public void disableKioskMode(Context context) {
         if (isDeviceinLockTaskMode(context)) {
             try {
+                Log.i(LOG_TAG, "Disabling LockTask");
                 ((Activity) context).stopLockTask();
             } catch (Exception e) {
-                Log.i(LOG_TAG, "Cannot start Lock Task");
+                Log.i(LOG_TAG, "Cannot stop Lock Task");
             }
         }
     }

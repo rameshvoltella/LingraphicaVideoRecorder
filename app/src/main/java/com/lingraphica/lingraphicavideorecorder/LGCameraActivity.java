@@ -2,13 +2,13 @@ package com.lingraphica.lingraphicavideorecorder;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.hardware.Camera;
 import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -18,8 +18,10 @@ import android.widget.Toast;
 import com.lingraphica.audio.SoundPlayer;
 import com.lingraphica.device.camera.CameraOrientationController;
 import com.lingraphica.device.camera.CameraPreview;
+import com.lingraphica.util.GraphicsHelper;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -62,6 +64,7 @@ public class LGCameraActivity extends Activity implements Camera.PictureCallback
         setContentView(R.layout.activity_lgcamera);
 
         mCameraOrientationController = CameraOrientationController.newInstance();
+        new File(LGVideoRecorderApplication.TEMP_VIDEO_OUTPUT).delete();
         setupCameraForTakeVideo();
 
         // handle screen cancellation
@@ -205,11 +208,30 @@ public class LGCameraActivity extends Activity implements Camera.PictureCallback
     }
 
     public void onVideoTaken(int resultCode) {
-        ((LGVideoRecorderApplication) getApplication()).disableKioskMode(mContext);
         releaseMediaRecorder();
         recordingVideoRightNow = false;
         setResult(resultCode);
+        ((LGVideoRecorderApplication) getApplication()).disableKioskMode(mContext);
+        if (resultCode == RESULT_OK) {
+            // copy to output file
+            new File(LGVideoRecorderApplication.VIDEO_OUTPUT).delete();
+            new File(LGVideoRecorderApplication.TEMP_VIDEO_OUTPUT)
+                    .renameTo(new File(LGVideoRecorderApplication.VIDEO_OUTPUT));
+            // Thumbnail
+            Bitmap bitmap = new GraphicsHelper().getThumbnailImage(new File(LGVideoRecorderApplication.VIDEO_OUTPUT));
+            FileOutputStream out;
+            try {
+                out = new FileOutputStream(LGVideoRecorderApplication.THUMBNAIL_IMAGE);
+                bitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
+                out.flush();
+                out.getFD().sync();
+                out.close();
+            } catch (Exception e) {
+                Log.e(LGVideoRecorderApplication.LOG_TAG, "Exception while storing thumbnail", e);
+            }
+        }
         finish();
+
     }
 
     private void releaseMediaRecorder() {
