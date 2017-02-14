@@ -15,7 +15,8 @@
         android:theme="@style/LGTheme">
         <activity
             android:name=".LGCameraActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:excludeFromRecents="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
