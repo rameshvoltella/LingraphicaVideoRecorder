@@ -7,7 +7,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="a4731a2298d2fe6a25ef7cf6140b0ef33cde06d9">
+        sha1="b3fbd4e4502e839118ee7608b0d9cedc1fc05ad5">
         <dex dex="/Users/punit/Documents/dev/LingraphicaVideoRecorder/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_52dfcdc71ca65d51bf3dff975bda599f58ac2a12/classes.dex" />
     </item>
     <item
@@ -16,7 +16,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="46925ebfad56fa5c9e4acfadca813ba31e1e170c">
+        sha1="6e04e203e7676e78f5d308edd55b7e23998e5b86">
         <dex dex="/Users/punit/Documents/dev/LingraphicaVideoRecorder/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_8274703536ccef95f39dfad7fca94f17b432bb8a/classes.dex" />
     </item>
 
